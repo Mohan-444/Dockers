@@ -1,5 +1,5 @@
 ARG PYTHON_VERSION=3.10-slim
-From python:${PYTHON_VERSION} as Builder
+From python:${PYTHON_VERSION} as builder
 WORKDIR /app
 COPY requirements.txt .
 RUN PIP Install --no-cahe-dir -r requirements.txt
