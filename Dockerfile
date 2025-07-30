@@ -1,8 +1,8 @@
 ARG PYTHON_VERSION=3.10-slim
-From python:${PYTHON_VERSION} as builder
+FROM python:${PYTHON_VERSION} as builder
 WORKDIR /app
 COPY requirements.txt .
-RUN PIP Install --no-cahe-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 LABEL maintainer="mohan" \ 
         version="1.0"
@@ -24,6 +24,6 @@ STOPSIGNAL SIGINT
 
 ENTRYPOINT ["uvicorn"]
 
-CMD ["app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["app:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ONBUILD RUN echo "App base image prepared."
